@@ -1,0 +1,23 @@
+version: "3"
+services: 
+  client:
+    container_name: climate-based-food-client
+    build: 
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - server
+  
+  server:
+    container_name: climate-based-food-server
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_END=development 
